@@ -1,0 +1,2316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mamas — Prenatal & Postnatal Care</title>
+  <meta name="description"
+    content="Mamas — Uganda's premier prenatal and postnatal care centre. Expert midwifery, lactation support, newborn care and maternal wellness under one roof.">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --ink: #ffffff;
+      --deep: #f8f5f2;
+      --card: #ffffff;
+      --surface: #f3eff8;
+      --rose: #b85c72;
+      --rose2: #d4809a;
+      --rose3: #7a3a4a;
+      --lavender: #7b6eb0;
+      --cream: #0a0a0a;
+      --muted: rgba(10, 10, 10, .78);
+      --dim: rgba(10, 10, 10, .55);
+      --line: rgba(10, 10, 10, .1);
+      --line2: rgba(10, 10, 10, .05);
+      --wa: #25D366;
+      --grad: linear-gradient(135deg, #b85c72, #7b6eb0);
+    }
+
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px
+    }
+
+    body {
+      background: var(--ink);
+      color: var(--cream);
+      font-family: 'Jost', sans-serif;
+      font-weight: 400;
+      line-height: 1.65;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none
+    }
+
+    img {
+      display: block;
+      max-width: 100%
+    }
+
+    button {
+      font-family: 'Jost', sans-serif;
+      cursor: pointer
+    }
+
+
+    /* NAV */
+    .nav {
+      position: relative;
+      z-index: 200;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 56px;
+      background: #ffffff;
+      border-bottom: 1px solid var(--line);
+      box-shadow: 0 1px 24px rgba(0, 0, 0, .06);
+    }
+
+    .nav.scrolled {
+      box-shadow: 0 4px 32px rgba(0, 0, 0, .10)
+    }
+
+    .nav-logo {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 0;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 40px;
+      font-weight: 700;
+      letter-spacing: .04em;
+      white-space: nowrap;
+      flex-shrink: 0;
+      text-decoration: none;
+      color: #0a0a0a
+    }
+
+    .nav-logo .logo-main {
+      font-weight: 700;
+      font-style: normal;
+      color: #0a0a0a;
+      letter-spacing: .02em
+    }
+
+    .nav-logo .logo-accent {
+      font-style: italic;
+      font-weight: 400;
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: .02em
+    }
+
+    .nav-logo .logo-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--grad);
+      display: inline-block;
+      margin-left: 3px;
+      margin-bottom: 6px;
+      flex-shrink: 0
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+      flex: 1;
+      justify-content: center
+    }
+
+    .nav-links a {
+      font-size: 11px;
+      letter-spacing: .24em;
+      text-transform: uppercase;
+      color: #111;
+      font-weight: 500;
+      transition: color .25s
+    }
+
+    .nav-links a:hover {
+      color: var(--rose)
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-shrink: 0
+    }
+
+    .nav-book {
+      background: var(--grad);
+      color: #fff;
+      border: none;
+      padding: 10px 24px;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      transition: opacity .25s, transform .25s
+    }
+
+    .nav-book:hover {
+      opacity: .85;
+      transform: translateY(-1px)
+    }
+
+    .nav-burger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      padding: 6px;
+      background: none;
+      border: none;
+      cursor: pointer
+    }
+
+    .nav-burger span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--cream);
+      transition: all .3s
+    }
+
+    .nav-burger.open span:nth-child(1) {
+      transform: translateY(6.5px) rotate(45deg)
+    }
+
+    .nav-burger.open span:nth-child(2) {
+      opacity: 0;
+      transform: scaleX(0)
+    }
+
+    .nav-burger.open span:nth-child(3) {
+      transform: translateY(-6.5px) rotate(-45deg)
+    }
+
+    /* DRAWER */
+    .drawer {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(255, 255, 255, .98);
+      z-index: 190;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      padding: 100px 40px 60px
+    }
+
+    .drawer.open {
+      display: flex
+    }
+
+    .drawer nav {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+      width: 100%;
+      margin-bottom: 36px
+    }
+
+    .drawer nav a {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 40px;
+      font-weight: 300;
+      color: rgba(26, 21, 32, .7);
+      letter-spacing: .06em;
+      padding: 10px 0;
+      transition: color .2s;
+      width: 100%;
+      text-align: center;
+      border-bottom: 1px solid var(--line2)
+    }
+
+    .drawer nav a:hover {
+      color: var(--rose)
+    }
+
+    .drawer-cta {
+      background: var(--grad);
+      color: #fff;
+      border: none;
+      padding: 16px 40px;
+      font-size: 13px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      margin-top: 8px
+    }
+
+    /* FLOATER */
+    .floater {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 500
+    }
+
+    .floater-btn {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      border: none;
+      background: var(--wa);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 28px rgba(37, 211, 102, .4);
+      transition: transform .25s;
+      position: relative;
+      z-index: 2
+    }
+
+    .floater-btn:hover {
+      transform: scale(1.1)
+    }
+
+    .floater-ring {
+      position: absolute;
+      inset: -7px;
+      border-radius: 50%;
+      border: 2px solid rgba(37, 211, 102, .3);
+      animation: rpulse 2.2s ease-out infinite
+    }
+
+    @keyframes rpulse {
+      0% {
+        transform: scale(.9);
+        opacity: .8
+      }
+
+      70% {
+        transform: scale(1.35);
+        opacity: 0
+      }
+
+      100% {
+        transform: scale(1.35);
+        opacity: 0
+      }
+    }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1800&q=90') center/cover no-repeat
+    }
+
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(7, 6, 10, 1) 0%, rgba(7, 6, 10, .8) 35%, rgba(7, 6, 10, .35) 65%, rgba(7, 6, 10, .1) 100%)
+    }
+
+    .hero-orb {
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(155, 142, 196, .18) 0%, transparent 70%);
+      top: -100px;
+      right: -100px;
+      pointer-events: none;
+      animation: orbFloat 8s ease-in-out infinite
+    }
+
+    @keyframes orbFloat {
+
+      0%,
+      100% {
+        transform: translateY(0) scale(1)
+      }
+
+      50% {
+        transform: translateY(-30px) scale(1.04)
+      }
+    }
+
+    .hero-side-text {
+      position: absolute;
+      right: 52px;
+      top: 50%;
+      transform: translateY(-50%) rotate(90deg);
+      font-size: 9px;
+      letter-spacing: .42em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, .45);
+      z-index: 2
+    }
+
+    .hero-body {
+      position: relative;
+      z-index: 2;
+      padding: 60px 56px 80px;
+      max-width: 620px
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 9.5px;
+      letter-spacing: .4em;
+      text-transform: uppercase;
+      color: var(--rose);
+      font-weight: 600;
+      margin-bottom: 16px;
+      animation: rise .9s .1s both
+    }
+
+    .hero-kicker::before {
+      content: '';
+      width: 36px;
+      height: 1px;
+      background: var(--rose)
+    }
+
+    .hero-h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(36px, 5vw, 72px);
+      font-weight: 400;
+      line-height: .95;
+      letter-spacing: -.01em;
+      color: #fff;
+      margin-bottom: 20px;
+      animation: rise .9s .2s both
+    }
+
+    .hero-h1 em {
+      font-style: italic;
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: block
+    }
+
+    .hero-p {
+      font-size: 13px;
+      color: rgba(255, 255, 255, .85);
+      font-weight: 400;
+      max-width: 400px;
+      line-height: 1.85;
+      margin-bottom: 34px;
+      animation: rise .9s .3s both
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      animation: rise .9s .4s both
+    }
+
+    .btn-primary {
+      background: var(--grad);
+      color: #fff;
+      border: none;
+      padding: 18px 48px;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: .26em;
+      text-transform: uppercase;
+      border-radius: 3px;
+      transition: transform .3s, box-shadow .3s;
+      position: relative;
+      overflow: hidden
+    }
+
+    .btn-primary::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255, 255, 255, .15), transparent);
+      opacity: 0;
+      transition: opacity .3s
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 20px 50px rgba(201, 120, 138, .45)
+    }
+
+    .btn-primary:hover::after {
+      opacity: 1
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid rgba(247, 242, 239, .3);
+      color: var(--cream);
+      padding: 18px 48px;
+      font-size: 12px;
+      letter-spacing: .26em;
+      text-transform: uppercase;
+      border-radius: 3px;
+      transition: border-color .3s, background .3s, color .3s;
+      backdrop-filter: blur(8px)
+    }
+
+    .btn-outline:hover {
+      border-color: var(--rose);
+      background: rgba(201, 120, 138, .1);
+      color: var(--rose2)
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 40px;
+      right: 56px;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 9px;
+      color: rgba(255, 255, 255, .45);
+      font-size: 9px;
+      letter-spacing: .32em;
+      text-transform: uppercase
+    }
+
+    .hero-scroll-bar {
+      width: 1px;
+      height: 52px;
+      background: linear-gradient(to bottom, var(--dim), transparent);
+      animation: scroll-anim 1.8s ease-in-out infinite
+    }
+
+    @keyframes scroll-anim {
+
+      0%,
+      100% {
+        transform: scaleY(.5);
+        transform-origin: top
+      }
+
+      50% {
+        transform: scaleY(1)
+      }
+    }
+
+    @keyframes rise {
+      from {
+        opacity: 0;
+        transform: translateY(44px)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
+
+    /* INTERSTITIAL — BETWEEN HERO & ABOUT */
+    .intro-strip {
+      background: var(--deep);
+      padding: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      border-bottom: 1px solid var(--line);
+      flex-wrap: wrap
+    }
+
+    .intro-strip-text {
+      max-width: 560px
+    }
+
+    .intro-strip-text p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(20px, 2.2vw, 28px);
+      font-weight: 300;
+      font-style: italic;
+      color: rgba(247, 242, 239, .8);
+      line-height: 1.55
+    }
+
+    .intro-strip-text p strong {
+      font-style: normal;
+      font-weight: 400;
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text
+    }
+
+    .intro-strip-btns {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex-shrink: 0
+    }
+
+    .intro-strip-btns .btn-primary {
+      padding: 15px 36px
+    }
+
+    .intro-strip-btns .btn-outline {
+      padding: 15px 36px
+    }
+
+    @media(max-width:768px) {
+      .intro-strip {
+        padding: 40px 28px;
+        flex-direction: column;
+        text-align: center
+      }
+
+      .intro-strip-btns {
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap
+      }
+    }
+
+    @media(max-width:480px) {
+      .intro-strip {
+        padding: 32px 20px
+      }
+    }
+
+    /* STATS + WHY US */
+    .why-sec {
+      background: var(--ink);
+      padding: 0
+    }
+
+    .stats-band {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line)
+    }
+
+    .stat {
+      padding: 48px 24px;
+      text-align: center;
+      border-right: 1px solid var(--line);
+      position: relative;
+      overflow: hidden;
+      transition: background .3s
+    }
+
+    .stat::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(201, 120, 138, .06), transparent 70%);
+      opacity: 0;
+      transition: opacity .4s
+    }
+
+    .stat:hover::before {
+      opacity: 1
+    }
+
+    .stat:last-child {
+      border-right: none
+    }
+
+    .stat-n {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 60px;
+      font-weight: 300;
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1
+    }
+
+    .stat-l {
+      font-size: 10px;
+      letter-spacing: .26em;
+      text-transform: uppercase;
+      color: var(--dim);
+      margin-top: 10px
+    }
+
+    .stat-sub {
+      font-size: 11.5px;
+      color: var(--muted);
+      margin-top: 6px;
+      line-height: 1.5
+    }
+
+    /* SERVICE PREVIEW STRIP */
+    .srv-preview {
+      background: #f3eff8;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 64px 56px
+    }
+
+    .srv-preview-head {
+      text-align: center;
+      margin-bottom: 48px
+    }
+
+    .srv-preview-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 1px;
+      background: var(--line)
+    }
+
+    .srv-prev-item {
+      background: #f3eff8;
+      padding: 32px 20px;
+      text-align: center;
+      cursor: pointer;
+      border-top: 2px solid transparent;
+      transition: all .3s
+    }
+
+    .srv-prev-item:hover {
+      background: #ebe5f5;
+      border-top-color: var(--rose);
+      transform: translateY(-3px)
+    }
+
+    .srv-prev-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 0 auto 16px;
+      border: 2px solid var(--line);
+      transition: border-color .3s, transform .3s;
+      display: block
+    }
+
+    .srv-prev-item:hover .srv-prev-icon {
+      border-color: var(--rose);
+      transform: scale(1.06)
+    }
+
+    .srv-prev-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block
+    }
+
+    .srv-prev-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 17px;
+      font-weight: 600;
+      color: #0a0a0a;
+      line-height: 1.3;
+      margin-bottom: 8px
+    }
+
+    .srv-prev-tag {
+      font-size: 9.5px;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+      color: var(--rose);
+      opacity: .8
+    }
+
+    @media(max-width:1024px) {
+      .srv-preview-grid {
+        grid-template-columns: repeat(3, 1fr)
+      }
+    }
+
+    @media(max-width:768px) {
+      .srv-preview-grid {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .srv-preview {
+        padding: 48px 28px
+      }
+    }
+
+    @media(max-width:480px) {
+      .srv-preview-grid {
+        grid-template-columns: 1fr
+      }
+
+      .srv-preview {
+        padding: 40px 20px
+      }
+    }
+
+    @media(max-width:768px) {
+      .stats-band {
+        grid-template-columns: repeat(2, 1fr)
+      }
+    }
+
+    /* SECTION HELPERS */
+    .sec {
+      padding: 108px 56px
+    }
+
+    .sec-sm {
+      padding: 80px 56px
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 9.5px;
+      letter-spacing: .42em;
+      text-transform: uppercase;
+      color: var(--rose);
+      font-weight: 600;
+      margin-bottom: 16px
+    }
+
+    .eyebrow::before {
+      content: '';
+      width: 28px;
+      height: 1px;
+      background: var(--rose)
+    }
+
+    .h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(36px, 5vw, 66px);
+      font-weight: 400;
+      line-height: 1.05;
+      color: #0a0a0a;
+      margin-bottom: 18px
+    }
+
+    .h2 em {
+      font-style: italic;
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text
+    }
+
+    .sec-lead {
+      font-size: 15.5px;
+      color: #222;
+      font-weight: 400;
+      line-height: 1.9;
+      max-width: 560px
+    }
+
+    /* ABOUT */
+    .about-sec {
+      background: #f8f5f2
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      min-height: 580px
+    }
+
+    .about-img {
+      position: relative;
+      overflow: hidden
+    }
+
+    .about-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(.82);
+      transition: transform .7s, filter .5s
+    }
+
+    .about-img:hover img {
+      transform: scale(1.03);
+      filter: brightness(.9)
+    }
+
+    .about-img-badge {
+      position: absolute;
+      bottom: 32px;
+      left: 32px;
+      background: rgba(255, 255, 255, .95);
+      border: 1px solid var(--line);
+      padding: 16px 22px;
+      backdrop-filter: blur(12px)
+    }
+
+    .about-img-badge strong {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 36px;
+      font-weight: 300;
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: block;
+      line-height: 1
+    }
+
+    .about-img-badge span {
+      font-size: 9.5px;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      color: var(--dim)
+    }
+
+    .about-content {
+      padding: 80px 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center
+    }
+
+    .about-list {
+      margin-top: 32px;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px
+    }
+
+    .about-list li {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.7
+    }
+
+    .check {
+      width: 18px;
+      height: 18px;
+      border: 1px solid var(--rose);
+      color: var(--rose);
+      font-size: 11px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px
+    }
+
+    .about-cta {
+      margin-top: 36px
+    }
+
+    /* SERVICES */
+    .services-sec {
+      background: #ffffff
+    }
+
+    .srv-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 40px;
+      margin-bottom: 52px;
+      flex-wrap: wrap
+    }
+
+    .srv-head-right {
+      max-width: 340px;
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.85
+    }
+
+    .srv-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px
+    }
+
+    .srv-card {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      background: var(--card)
+    }
+
+    .srv-card img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      filter: brightness(.65);
+      transition: transform .6s, filter .5s
+    }
+
+    .srv-card:hover img {
+      transform: scale(1.05);
+      filter: brightness(.8)
+    }
+
+    .srv-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(7, 6, 10, .95) 0%, transparent 55%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 32px 28px
+    }
+
+    .srv-icon {
+      font-size: 28px;
+      margin-bottom: 12px
+    }
+
+    .srv-tag {
+      font-size: 9px;
+      letter-spacing: .36em;
+      text-transform: uppercase;
+      color: #f0b0bf;
+      margin-bottom: 8px
+    }
+
+    .srv-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      font-weight: 400;
+      color: #ffffff;
+      line-height: 1.2;
+      margin-bottom: 8px
+    }
+
+    .srv-desc {
+      font-size: 12.5px;
+      color: rgba(255, 255, 255, .82);
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all .35s
+    }
+
+    .srv-card:hover .srv-desc {
+      opacity: 1;
+      transform: translateY(0)
+    }
+
+    /* PROCESS */
+    .process-sec {
+      background: #f3eff8;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line)
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--line);
+      margin-top: 56px
+    }
+
+    .proc-step {
+      background: #f3eff8;
+      padding: 44px 32px;
+      border-top: 2px solid transparent;
+      transition: border-top-color .3s, background .3s
+    }
+
+    .proc-step:hover {
+      background: #ebe5f5;
+      border-top-color: var(--rose)
+    }
+
+    .proc-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 64px;
+      font-weight: 300;
+      color: rgba(26, 21, 32, .06);
+      line-height: 1;
+      margin-bottom: -10px
+    }
+
+    .proc-icon {
+      font-size: 22px;
+      margin-bottom: 10px
+    }
+
+    .proc-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: #0a0a0a
+    }
+
+    .proc-desc {
+      font-size: 13.5px;
+      color: #333;
+      font-weight: 400;
+      line-height: 1.8
+    }
+
+    /* GALLERY */
+    .gallery-sec {
+      background: #f8f5f2
+    }
+
+    .gallery-intro {
+      max-width: 600px;
+      margin-bottom: 52px
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr;
+      grid-template-rows: 280px 280px;
+      gap: 4px
+    }
+
+    .gc {
+      position: relative;
+      overflow: hidden;
+      background: var(--card)
+    }
+
+    .gc img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(.75);
+      transition: filter .5s, transform .6s
+    }
+
+    .gc:hover img {
+      filter: brightness(.92);
+      transform: scale(1.05)
+    }
+
+    .gc-main {
+      grid-row: span 2
+    }
+
+    .gc-cap {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 14px 18px;
+      background: linear-gradient(to top, rgba(7, 6, 10, .9), transparent);
+      font-size: 10px;
+      letter-spacing: .26em;
+      text-transform: uppercase;
+      color: rgba(247, 242, 239, .75);
+      opacity: 0;
+      transform: translateY(8px);
+      transition: all .3s
+    }
+
+    .gc:hover .gc-cap {
+      opacity: 1;
+      transform: translateY(0)
+    }
+
+    /* WELLNESS STRIP */
+    .wellness-sec {
+      background: #ffffff;
+      padding: 80px 56px;
+      text-align: center;
+      position: relative;
+      overflow: hidden
+    }
+
+    .wellness-sec::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, rgba(155, 142, 196, .12) 0%, transparent 70%);
+      pointer-events: none
+    }
+
+    .wellness-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin-top: 40px
+    }
+
+    .pill {
+      background: rgba(26, 21, 32, .04);
+      border: 1px solid var(--line);
+      padding: 12px 24px;
+      font-size: 11px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border-radius: 100px;
+      transition: border-color .25s, background .25s, color .25s
+    }
+
+    .pill:hover {
+      border-color: var(--rose);
+      background: rgba(184, 92, 114, .08);
+      color: var(--rose)
+    }
+
+    /* TESTIMONIALS */
+    .test-sec {
+      background: var(--ink)
+    }
+
+    .test-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--line);
+      margin-top: 54px
+    }
+
+    .test-card {
+      background: #f8f5f2;
+      padding: 44px 36px;
+      transition: background .3s;
+      display: flex;
+      flex-direction: column
+    }
+
+    .test-card:hover {
+      background: #ede8f5
+    }
+
+    .test-stars {
+      font-size: 13px;
+      letter-spacing: 4px;
+      margin-bottom: 22px;
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text
+    }
+
+    .test-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.7;
+      color: #111;
+      margin-bottom: 28px;
+      flex: 1
+    }
+
+    .test-author {
+      display: flex;
+      align-items: center;
+      gap: 14px
+    }
+
+    .test-av {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      color: #fff;
+      flex-shrink: 0;
+      background: var(--grad)
+    }
+
+    .test-name {
+      font-size: 13.5px;
+      font-weight: 400
+    }
+
+    .test-detail {
+      font-size: 11px;
+      color: var(--dim);
+      margin-top: 2px
+    }
+
+    /* CTA */
+    .cta-sec {
+      position: relative;
+      padding: 100px 56px;
+      text-align: center;
+      overflow: hidden
+    }
+
+    .cta-bg {
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1491013516836-7db643ee125a?w=1400&q=85') center/cover no-repeat
+    }
+
+    .cta-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(7, 6, 10, .88)
+    }
+
+    .cta-body {
+      position: relative;
+      z-index: 2
+    }
+
+    .cta-h {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(42px, 5.5vw, 74px);
+      font-weight: 300;
+      margin-bottom: 18px;
+      line-height: 1.1
+    }
+
+    .cta-h em {
+      font-style: italic;
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text
+    }
+
+    .cta-desc {
+      font-size: 16px;
+      color: rgba(247, 242, 239, .85);
+      max-width: 580px;
+      margin: 0 auto 38px;
+      line-height: 1.85
+    }
+
+    .cta-btns {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap
+    }
+
+    /* FOOTER */
+    footer {
+      background: #f8f5f2;
+      border-top: 1px solid var(--line);
+      padding: 64px 56px 40px
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 52px;
+      padding-bottom: 52px;
+      border-bottom: 1px solid var(--line)
+    }
+
+    .footer-brand-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 30px;
+      font-weight: 400;
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 14px
+    }
+
+    .footer-brand-name span {
+      font-style: italic
+    }
+
+    .footer-tagline {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 22px
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 10px
+    }
+
+    .social-ico {
+      width: 36px;
+      height: 36px;
+      border: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      color: var(--dim);
+      transition: border-color .25s, color .25s
+    }
+
+    .social-ico:hover {
+      border-color: var(--rose);
+      color: var(--rose)
+    }
+
+    .footer-col h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      font-weight: 400;
+      margin-bottom: 18px;
+      color: var(--rose)
+    }
+
+    .footer-col ul {
+      list-style: none
+    }
+
+    .footer-col li {
+      margin-bottom: 10px
+    }
+
+    .footer-col a {
+      font-size: 13px;
+      color: var(--muted);
+      transition: color .2s
+    }
+
+    .footer-col a:hover {
+      color: var(--rose)
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 12px;
+      color: var(--dim)
+    }
+
+    .footer-bottom a {
+      color: var(--dim);
+      text-decoration: underline
+    }
+
+    .footer-bottom a:hover {
+      color: var(--rose)
+    }
+
+    /* GLOW LINES */
+    .glow-line {
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--rose), var(--lavender), transparent);
+      opacity: .3
+    }
+
+    /* ARTICLES */
+    .articles-sec {
+      background: var(--deep)
+    }
+
+    .articles-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 54px
+    }
+
+    .art-card {
+      background: #ffffff;
+      border: 1px solid var(--line);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: border-color .3s, transform .35s
+    }
+
+    .art-card:hover {
+      border-color: rgba(201, 120, 138, .35);
+      transform: translateY(-4px)
+    }
+
+    .art-card-img {
+      position: relative;
+      overflow: hidden;
+      height: 240px
+    }
+
+    .art-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(.82);
+      transition: transform .6s, filter .5s
+    }
+
+    .art-card:hover .art-card-img img {
+      transform: scale(1.05);
+      filter: brightness(.92)
+    }
+
+    .art-badge {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      background: var(--grad);
+      color: #fff;
+      font-size: 9px;
+      letter-spacing: .26em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 100px
+    }
+
+    .art-body {
+      padding: 28px 26px;
+      flex: 1;
+      display: flex;
+      flex-direction: column
+    }
+
+    .art-cat {
+      font-size: 9px;
+      letter-spacing: .36em;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 12px
+    }
+
+    .art-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 600;
+      line-height: 1.35;
+      color: #0a0a0a;
+      margin-bottom: 12px
+    }
+
+    .art-excerpt {
+      font-size: 13.5px;
+      color: #333;
+      font-weight: 400;
+      line-height: 1.8;
+      flex: 1;
+      margin-bottom: 20px
+    }
+
+    .art-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding-top: 16px;
+      border-top: 1px solid var(--line)
+    }
+
+    .art-av {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      overflow: hidden;
+      flex-shrink: 0
+    }
+
+    .art-av img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover
+    }
+
+    .art-av-init {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--grad);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 16px;
+      color: #fff;
+      flex-shrink: 0
+    }
+
+    .art-author-name {
+      font-size: 12.5px;
+      font-weight: 500;
+      color: var(--cream)
+    }
+
+    .art-author-role {
+      font-size: 10.5px;
+      color: var(--dim);
+      margin-top: 1px
+    }
+
+    .art-read {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 10px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-top: 14px;
+      transition: gap .25s
+    }
+
+    .art-card:hover .art-read {
+      gap: 10px
+    }
+
+    @media(max-width:1024px) {
+      .articles-grid {
+        grid-template-columns: repeat(2, 1fr)
+      }
+    }
+
+    @media(max-width:768px) {
+      .articles-grid {
+        grid-template-columns: 1fr
+      }
+    }
+
+    /* RESPONSIVE */
+    @media(max-width:1024px) {
+      .sec {
+        padding: 80px 40px
+      }
+
+      .about-content {
+        padding: 60px 44px
+      }
+
+      .srv-grid {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .process-grid {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .footer-top {
+        grid-template-columns: repeat(2, 1fr)
+      }
+    }
+
+    @media(max-width:768px) {
+      .nav {
+        padding: 0 28px;
+        height: 58px;
+        top: 36px
+      }
+
+      .nav-logo {
+        font-size: 20px
+      }
+
+      .nav-links,
+      .nav-book {
+        display: none
+      }
+
+      .nav-burger {
+        display: flex
+      }
+
+      .hero-body {
+        padding: 100px 28px 70px;
+        max-width: 100%
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr
+      }
+
+      .about-img {
+        height: 340px
+      }
+
+      .about-img img {
+        height: 340px
+      }
+
+      .about-content {
+        padding: 48px 28px
+      }
+
+      .srv-grid {
+        grid-template-columns: 1fr
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto
+      }
+
+      .gc-main {
+        grid-row: auto
+      }
+
+      .test-grid {
+        grid-template-columns: 1fr
+      }
+
+      .stats-band {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .process-grid {
+        grid-template-columns: 1fr
+      }
+
+      .footer-top {
+        grid-template-columns: 1fr;
+        gap: 28px
+      }
+    }
+
+    @media(max-width:480px) {
+      .nav {
+        top: 32px
+      }
+
+      .ticker-item {
+        font-size: 10px;
+        padding: 0 28px
+      }
+
+      .hero-body {
+        padding: 80px 20px 56px
+      }
+
+      .sec,
+      .sec-sm {
+        padding: 60px 20px
+      }
+
+      .srv-card img {
+        height: 320px
+      }
+
+      .h2 {
+        font-size: clamp(30px, 5vw, 48px)
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+
+  <!-- NAV -->
+  <div class="nav" id="mainNav">
+    <a href="#" class="nav-logo"><span class="logo-main">Ma</span><span class="logo-accent">mas</span><span
+        class="logo-dot"></span></a>
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#articles">Articles</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#testimonials">Reviews</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="nav-book"
+        onclick="window.open('https://wa.me/256700742469?text=Hi%21%20I%27d%20like%20to%20book%20a%20consultation%20at%20Mamas%20Studio.','_blank')">Book
+        Now</button>
+      <button class="nav-burger" id="burger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- DRAWER -->
+  <div class="drawer" id="drawer">
+    <nav>
+      <a href="#">Home</a>
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#articles">Articles</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#testimonials">Reviews</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="drawer-cta"
+      onclick="window.open('https://wa.me/256700742469?text=Hi%21%20I%27d%20like%20to%20book%20a%20consultation%20at%20Mamas.','_blank')">Book
+      a Consultation</button>
+  </div>
+
+  <!-- FLOATER -->
+  <div class="floater">
+    <button class="floater-btn" onclick="window.open('https://wa.me/256700742469','_blank')" aria-label="WhatsApp">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+        <path
+          d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+        <path
+          d="M12 0C5.373 0 0 5.373 0 12c0 2.135.563 4.14 1.545 5.875L0 24l6.335-1.524A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 0 1-5.007-1.372l-.359-.214-3.72.895.93-3.61-.234-.37A9.818 9.818 0 0 1 2.182 12c0-5.42 4.398-9.818 9.818-9.818 5.42 0 9.818 4.398 9.818 9.818 0 5.42-4.398 9.818-9.818 9.818z" />
+      </svg>
+      <div class="floater-ring"></div>
+    </button>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-orb"></div>
+    <div class="hero-side-text">Kampala, Uganda — Est. 2018</div>
+    <div class="hero-body">
+      <div class="hero-kicker">Prenatal &amp; Postnatal Care Centre</div>
+      <h1 class="hero-h1">Born to <em>Nurture You</em></h1>
+      <p class="hero-p">Mamas — Uganda's premier maternal care sanctuary. Compassionate prenatal support,
+        postnatal recovery, lactation guidance and newborn care, all in one luxurious space.</p>
+
+    </div>
+    <div class="hero-scroll"><span>Scroll</span>
+      <div class="hero-scroll-bar"></div>
+    </div>
+  </section>
+
+
+  <!-- SERVICE PREVIEW STRIP -->
+  <div class="srv-preview">
+    <div class="srv-preview-head">
+      <span class="eyebrow">What We Do</span>
+      <h2 class="h2" style="text-align:center">Six Pillars of <em>Maternal Care</em></h2>
+    </div>
+    <div class="srv-preview-grid">
+      <div class="srv-prev-item" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">
+        <div class="srv-prev-icon"><img src="https://images.unsplash.com/photo-1581578017093-cd30fce4eeb7?w=160&q=85"
+            alt="Prenatal Care"></div>
+        <div class="srv-prev-name">Prenatal Care</div>
+        <div class="srv-prev-tag">Service 01</div>
+      </div>
+      <div class="srv-prev-item" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">
+        <div class="srv-prev-icon"><img src="https://images.unsplash.com/photo-1555252333-9f8e92e65df9?w=160&q=85"
+            alt="Postnatal Recovery"></div>
+        <div class="srv-prev-name">Postnatal Recovery</div>
+        <div class="srv-prev-tag">Service 02</div>
+      </div>
+      <div class="srv-prev-item" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">
+        <div class="srv-prev-icon"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=160&q=85"
+            alt="Lactation Support"></div>
+        <div class="srv-prev-name">Lactation Support</div>
+        <div class="srv-prev-tag">Service 03</div>
+      </div>
+      <div class="srv-prev-item" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">
+        <div class="srv-prev-icon"><img src="https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=160&q=85"
+            alt="Newborn Care"></div>
+        <div class="srv-prev-name">Newborn Care</div>
+        <div class="srv-prev-tag">Service 04</div>
+      </div>
+      <div class="srv-prev-item" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">
+        <div class="srv-prev-icon"><img src="https://images.unsplash.com/photo-1584432810601-6c7f27d2362b?w=160&q=85"
+            alt="Maternal Massage"></div>
+        <div class="srv-prev-name">Maternal Massage</div>
+        <div class="srv-prev-tag">Service 05</div>
+      </div>
+      <div class="srv-prev-item" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">
+        <div class="srv-prev-icon"><img src="https://images.unsplash.com/photo-1527137342181-19aab11a8ee8?w=160&q=85"
+            alt="Birth Preparation"></div>
+        <div class="srv-prev-name">Birth Preparation</div>
+        <div class="srv-prev-tag">Service 06</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about" class="about-sec">
+    <div class="about-grid">
+      <div class="about-img">
+        <img src="https://images.unsplash.com/photo-1555252333-9f8e92e65df9?w=800&q=90" alt="Mamas care">
+      </div>
+      <div class="about-content">
+        <span class="eyebrow">Our Story</span>
+        <h2 class="h2">A Sanctuary for <em>Every Mama</em></h2>
+        <p class="sec-lead">Founded with love in Kampala, Mamas was born from a deep commitment to supporting
+          mothers through every stage of their journey — from the first trimester to the early weeks of motherhood.</p>
+        <ul class="about-list">
+          <li>
+            <div class="check">✓</div>Certified midwives and postnatal care specialists on-site
+          </li>
+          <li>
+            <div class="check">✓</div>Personalised prenatal check-ups and birth preparation plans
+          </li>
+          <li>
+            <div class="check">✓</div>Private lactation consultations and breastfeeding support
+          </li>
+          <li>
+            <div class="check">✓</div>Gentle postnatal massage, recovery and newborn guidance
+          </li>
+        </ul>
+        <div class="about-cta">
+          <button class="btn-primary"
+            onclick="window.open('https://wa.me/256700742469?text=Hi%20Mamas%21%20I%27d%20like%20to%20learn%20more%20about%20your%20care%20services.','_blank')">Get
+            in Touch</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="glow-line"></div>
+
+  <!-- SERVICES -->
+  <section id="services" class="sec services-sec">
+    <div class="srv-head">
+      <div>
+        <span class="eyebrow">Our Services</span>
+        <h2 class="h2">Care for <em>Every Stage</em></h2>
+      </div>
+      <div class="srv-head-right">From your first prenatal visit to your postnatal recovery, our expert team is with you
+        every step of the way.</div>
+    </div>
+    <div class="srv-grid">
+      <div class="srv-card">
+        <img src="https://images.unsplash.com/photo-1581578017093-cd30fce4eeb7?w=700&q=90" alt="Prenatal Care">
+        <div class="srv-overlay">
+          <div class="srv-icon">🩺</div>
+          <div class="srv-tag">Service 01</div>
+          <div class="srv-name">Prenatal Care</div>
+          <p class="srv-desc">Comprehensive maternity check-ups, growth monitoring, nutrition counselling and birth
+            preparation throughout your pregnancy.</p>
+        </div>
+      </div>
+      <div class="srv-card">
+        <img src="https://images.unsplash.com/photo-1555252333-9f8e92e65df9?w=700&q=90" alt="Postnatal Recovery">
+        <div class="srv-overlay">
+          <div class="srv-icon">💆‍♀️</div>
+          <div class="srv-tag">Service 02</div>
+          <div class="srv-name">Postnatal Recovery</div>
+          <p class="srv-desc">Gentle postnatal massage, physical recovery support, emotional wellbeing check-ins and
+            wound care after delivery.</p>
+        </div>
+      </div>
+      <div class="srv-card">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=700&q=90" alt="Lactation Support">
+        <div class="srv-overlay">
+          <div class="srv-icon">🍼</div>
+          <div class="srv-tag">Service 03</div>
+          <div class="srv-name">Lactation Support</div>
+          <p class="srv-desc">One-on-one breastfeeding consultations, latching techniques, milk supply guidance and
+            pumping support.</p>
+        </div>
+      </div>
+      <div class="srv-card">
+        <img src="https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=700&q=90" alt="Newborn Care">
+        <div class="srv-overlay">
+          <div class="srv-icon">👶</div>
+          <div class="srv-tag">Service 04</div>
+          <div class="srv-name">Newborn Care</div>
+          <p class="srv-desc">Professional newborn assessments, bathing, cord care, safe sleep guidance and early
+            developmental milestone tracking.</p>
+        </div>
+      </div>
+      <div class="srv-card">
+        <img src="https://images.unsplash.com/photo-1584432810601-6c7f27d2362b?w=700&q=90" alt="Maternal Massage">
+        <div class="srv-overlay">
+          <div class="srv-icon">✨</div>
+          <div class="srv-tag">Service 05</div>
+          <div class="srv-name">Maternal Massage</div>
+          <p class="srv-desc">Therapeutic prenatal and postnatal massage to relieve tension, reduce swelling and restore
+            your body naturally.</p>
+        </div>
+      </div>
+      <div class="srv-card">
+        <img src="https://images.unsplash.com/photo-1527137342181-19aab11a8ee8?w=700&q=90" alt="Birth Preparation">
+        <div class="srv-overlay">
+          <div class="srv-icon">📖</div>
+          <div class="srv-tag">Service 06</div>
+          <div class="srv-name">Birth Preparation</div>
+          <p class="srv-desc">Personalised classes covering breathing, birth plans, hospital bag essentials, labour
+            stages and partner support roles.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="sec process-sec">
+    <span class="eyebrow">How It Works</span>
+    <h2 class="h2">Your Care <em>Journey</em></h2>
+    <div class="process-grid">
+      <div class="proc-step">
+        <div class="proc-num">01</div>
+        <div class="proc-icon">📞</div>
+        <div class="proc-title">Book a Consultation</div>
+        <p class="proc-desc">Reach us by WhatsApp or phone. We'll schedule your first visit and answer all your
+          questions.</p>
+      </div>
+      <div class="proc-step">
+        <div class="proc-num">02</div>
+        <div class="proc-icon">🩺</div>
+        <div class="proc-title">Initial Assessment</div>
+        <p class="proc-desc">Our specialists conduct a thorough assessment to understand your unique needs and health
+          history.</p>
+      </div>
+      <div class="proc-step">
+        <div class="proc-num">03</div>
+        <div class="proc-icon">📋</div>
+        <div class="proc-title">Personalised Plan</div>
+        <p class="proc-desc">We craft a bespoke care plan covering your prenatal visits, postnatal recovery or newborn
+          support.</p>
+      </div>
+      <div class="proc-step">
+        <div class="proc-num">04</div>
+        <div class="proc-icon">🌸</div>
+        <div class="proc-title">Ongoing Support</div>
+        <p class="proc-desc">We remain by your side — from pregnancy milestones through your postnatal recovery and
+          beyond.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery" class="sec gallery-sec">
+    <div class="gallery-intro">
+      <span class="eyebrow">Our Space</span>
+      <h2 class="h2">A Sanctuary <em>Built for You</em></h2>
+      <p class="sec-lead">Our warm, private studio is designed to make every mama feel safe, supported and celebrated.
+      </p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gc gc-main">
+        <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=700&q=90" alt="Mamas facility">
+        <div class="gc-cap">Mamas — Our Facility</div>
+      </div>
+      <div class="gc">
+        <img src="https://images.unsplash.com/photo-1581578017093-cd30fce4eeb7?w=400&q=90" alt="Prenatal consultation">
+        <div class="gc-cap">Prenatal Consultation</div>
+      </div>
+      <div class="gc">
+        <img src="https://images.unsplash.com/photo-1555252333-9f8e92e65df9?w=400&q=90" alt="Postnatal recovery">
+        <div class="gc-cap">Postnatal Recovery</div>
+      </div>
+      <div class="gc">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=90" alt="Newborn care">
+        <div class="gc-cap">Newborn Care</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARTICLES -->
+  <section id="articles" class="sec articles-sec">
+    <span class="eyebrow">Stories &amp; Insights</span>
+    <h2 class="h2">From Our <em>Mamas &amp; Team</em></h2>
+    <div class="articles-grid">
+
+      <!-- Article 1: Owner Feature -->
+      <div class="art-card">
+        <div class="art-card-img">
+          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=700&q=90" alt="Madam Infottrust">
+          <span class="art-badge">Founder's Story</span>
+        </div>
+        <div class="art-body">
+          <div class="art-cat">Meet the Founder</div>
+          <div class="art-title">"Every mother deserves to feel safe and celebrated" — Madam Infottrust</div>
+          <p class="art-excerpt">Madam Infottrust founded Mamas after witnessing the gaps in maternal care across
+            Uganda. Her vision was simple: create a place where every mother — regardless of background — receives
+            world-class, compassionate support from pregnancy through the first year of motherhood.</p>
+          <div class="art-author">
+            <div class="art-av-init">I</div>
+            <div>
+              <div class="art-author-name">Madam Infottrust</div>
+              <div class="art-author-role">Founder &amp; Director, Mamas</div>
+            </div>
+          </div>
+          <span class="art-read">Read her story →</span>
+        </div>
+      </div>
+
+      <!-- Article 2: Midwife Feature -->
+      <div class="art-card">
+        <div class="art-card-img">
+          <img src="https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?w=700&q=90" alt="Midwife consultation">
+          <span class="art-badge">Our Team</span>
+        </div>
+        <div class="art-body">
+          <div class="art-cat">Meet Our Midwives</div>
+          <div class="art-title">The skilled hands behind every safe delivery and recovery</div>
+          <p class="art-excerpt">Our team of certified midwives brings years of hands-on experience and genuine warmth
+            to every appointment. From prenatal check-ups to birth support and postnatal visits, they guide mothers with
+            expertise and heart — making Mamas feel like family.</p>
+          <div class="art-author">
+            <div class="art-av-init">N</div>
+            <div>
+              <div class="art-author-name">Nurse Sarah Namutebi</div>
+              <div class="art-author-role">Senior Midwife, Mamas</div>
+            </div>
+          </div>
+          <span class="art-read">Meet the team →</span>
+        </div>
+      </div>
+
+      <!-- Article 3: Mother's Story -->
+      <div class="art-card">
+        <div class="art-card-img">
+          <img src="https://images.unsplash.com/photo-1555252333-9f8e92e65df9?w=700&q=90" alt="Happy mother">
+          <span class="art-badge">Mama Story</span>
+        </div>
+        <div class="art-body">
+          <div class="art-cat">Real Experiences</div>
+          <div class="art-title">"Mamas gave me the confidence to embrace motherhood"</div>
+          <p class="art-excerpt">When Aisha Nakamya walked into Mamas at 12 weeks pregnant, she was overwhelmed
+            and anxious. Eight months later, she left with her healthy baby boy and an unwavering sense of confidence —
+            thanks to the prenatal care, lactation support and postnatal guidance she received.</p>
+          <div class="art-author">
+            <div class="art-av-init">A</div>
+            <div>
+              <div class="art-author-name">Aisha Nakamya</div>
+              <div class="art-author-role">New Mama, Kampala — 2025</div>
+            </div>
+          </div>
+          <span class="art-read">Read her story →</span>
+        </div>
+      </div>
+
+      <!-- Article 4: Newborn Care Tips -->
+      <div class="art-card">
+        <div class="art-card-img">
+          <img src="https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=700&q=90" alt="Newborn care">
+          <span class="art-badge">Expert Advice</span>
+        </div>
+        <div class="art-body">
+          <div class="art-cat">Newborn Care</div>
+          <div class="art-title">5 things every new mother should know about newborn care in the first week</div>
+          <p class="art-excerpt">The first seven days with your newborn are precious and demanding. Our specialist
+            midwives share the five most important things — from cord care and safe sleeping to feeding cues and
+            skin-to-skin contact — that will help you and baby thrive from day one.</p>
+          <div class="art-author">
+            <div class="art-av-init">R</div>
+            <div>
+              <div class="art-author-name">Midwife Rose Atim</div>
+              <div class="art-author-role">Newborn Care Specialist</div>
+            </div>
+          </div>
+          <span class="art-read">Read the guide →</span>
+        </div>
+      </div>
+
+      <!-- Article 5: Postnatal Recovery -->
+      <div class="art-card">
+        <div class="art-card-img">
+          <img src="https://images.unsplash.com/photo-1519689373023-dd07c7988603?w=700&q=90" alt="Postnatal recovery">
+          <span class="art-badge">Wellness</span>
+        </div>
+        <div class="art-body">
+          <div class="art-cat">Postnatal Recovery</div>
+          <div class="art-title">Healing after birth: what a healthy postnatal recovery really looks like</div>
+          <p class="art-excerpt">Recovery after childbirth is not a one-size-fits-all journey. Our postnatal care team
+            explains what to expect in the weeks after delivery — physically, emotionally and nutritionally — and how
+            Mamas's recovery programme supports you every step of the way.</p>
+          <div class="art-author">
+            <div class="art-av-init">G</div>
+            <div>
+              <div class="art-author-name">Grace Nantongo</div>
+              <div class="art-author-role">Mama of two, Entebbe</div>
+            </div>
+          </div>
+          <span class="art-read">Read her journey →</span>
+        </div>
+      </div>
+
+      <!-- Article 6: Breastfeeding -->
+      <div class="art-card">
+        <div class="art-card-img">
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=700&q=90" alt="Lactation support">
+          <span class="art-badge">Expert Advice</span>
+        </div>
+        <div class="art-body">
+          <div class="art-cat">Lactation &amp; Feeding</div>
+          <div class="art-title">Breastfeeding challenges are normal — here's how we help you overcome them</div>
+          <p class="art-excerpt">More than 60% of new mothers face breastfeeding difficulties in the first two weeks.
+            Our certified lactation consultant walks you through the most common challenges — latching issues, low
+            supply, engorgement — and the practical solutions we use at Mamas every day.</p>
+          <div class="art-author">
+            <div class="art-av-init">M</div>
+            <div>
+              <div class="art-author-name">Midwife Mary Zawedde</div>
+              <div class="art-author-role">Certified Lactation Consultant</div>
+            </div>
+          </div>
+          <span class="art-read">Read the article →</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- WELLNESS STRIP -->
+  <div class="wellness-sec">
+    <span class="eyebrow">What We Offer</span>
+    <h2 class="h2" style="max-width:600px;margin:0 auto 8px">Complete <em>Maternal Wellness</em></h2>
+    <div class="wellness-pills">
+      <div class="pill">Prenatal Check-Ups</div>
+      <div class="pill">Postnatal Massage</div>
+      <div class="pill">Breastfeeding Support</div>
+      <div class="pill">Newborn Assessment</div>
+      <div class="pill">Birth Planning</div>
+      <div class="pill">Emotional Wellbeing</div>
+      <div class="pill">Nutritional Advice</div>
+      <div class="pill">Sleep Coaching</div>
+      <div class="pill">Pelvic Floor Recovery</div>
+      <div class="pill">Partner Support Classes</div>
+      <div class="pill">Cord & Wound Care</div>
+      <div class="pill">Home Visits</div>
+    </div>
+  </div>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials" class="sec test-sec">
+    <span class="eyebrow">Mama Reviews</span>
+    <h2 class="h2">What Our <em>Mamas Say</em></h2>
+    <div class="test-grid">
+      <div class="test-card">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-quote">"Mamas held my hand through my entire pregnancy. The prenatal check-ups were
+          thorough and the team made me feel so calm and cared for every visit."</p>
+        <div class="test-author">
+          <div class="test-av">A</div>
+          <div>
+            <div class="test-name">Aisha Nakamya</div>
+            <div class="test-detail">New mama, Kampala — 2024</div>
+          </div>
+        </div>
+      </div>
+      <div class="test-card">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-quote">"After my delivery I struggled with breastfeeding. The lactation consultant at Mamas
+          Studio was an absolute lifesaver. Highly recommend their postnatal support."</p>
+        <div class="test-author">
+          <div class="test-av">G</div>
+          <div>
+            <div class="test-name">Grace Nantongo</div>
+            <div class="test-detail">Mama of two, Entebbe — 2024</div>
+          </div>
+        </div>
+      </div>
+      <div class="test-card">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-quote">"The newborn care sessions gave me so much confidence as a first-time mother. I felt truly
+          supported and the studio itself is such a beautiful, calm space."</p>
+        <div class="test-author">
+          <div class="test-av">F</div>
+          <div>
+            <div class="test-name">Fatuma Nabukeera</div>
+            <div class="test-detail">First-time mama, Wakiso — 2025</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-sec">
+    <div class="cta-bg"></div>
+    <div class="cta-body">
+      <h2 class="cta-h">Ready to Begin Your <em>Care Journey?</em></h2>
+      <p class="cta-desc">Book your consultation today and let Mamas surround you with the expert, compassionate
+        care you and your baby deserve.</p>
+      <div class="cta-btns">
+        <button class="btn-primary"
+          onclick="window.open('https://wa.me/256700742469?text=Hi%21%20I%27d%20like%20to%20book%20a%20consultation%20at%20Mamas%20Studio.','_blank')">Book
+          a Consultation</button>
+        <button class="btn-outline" onclick="window.open('https://wa.me/256700742469','_blank')">Chat on
+          WhatsApp</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="contact">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-name">Mamas <span>Studio</span></div>
+        <p class="footer-tagline">Uganda's premier prenatal and postnatal care sanctuary. Supporting mothers in Kampala
+          since 2018.</p>
+        <div class="footer-social">
+          <a class="social-ico" href="https://www.facebook.com/" target="_blank" title="Facebook">f</a>
+          <a class="social-ico" href="https://wa.me/256700742469" target="_blank" title="WhatsApp">w</a>
+          <a class="social-ico" href="#" title="Instagram">ig</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Our Services</h4>
+        <ul>
+          <li><a href="#services">Prenatal Care</a></li>
+          <li><a href="#services">Postnatal Recovery</a></li>
+          <li><a href="#services">Lactation Support</a></li>
+          <li><a href="#services">Newborn Care</a></li>
+          <li><a href="#services">Maternal Massage</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#gallery">Our Studio</a></li>
+          <li><a href="#testimonials">Reviews</a></li>
+          <li><a href="https://wa.me/256700742469?text=I%27d%20like%20to%20book%20a%20consultation" target="_blank">Book
+              Consultation</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+256700742469">+256 700 742 469</a></li>
+          <li><a href="https://wa.me/256700742469" target="_blank">WhatsApp Us</a></li>
+          <li><a href="https://www.facebook.com/" target="_blank">Facebook Page</a></li>
+          <li>Kampala, Uganda</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Mamas. All rights reserved.</p>
+      <p>Crafted with love for every mama.</p>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 100);
+    });
+    const burger = document.getElementById('burger');
+    const drawer = document.getElementById('drawer');
+    burger.addEventListener('click', () => {
+      burger.classList.toggle('open');
+      drawer.classList.toggle('open');
+    });
+    document.querySelectorAll('.drawer nav a').forEach(a => {
+      a.addEventListener('click', () => {
+        burger.classList.remove('open');
+        drawer.classList.remove('open');
+      });
+    });
+  </script>
+</body>
+
+</html>
