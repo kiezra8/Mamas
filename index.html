@@ -978,7 +978,7 @@
     .srv-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, rgba(7, 6, 10, .95) 0%, transparent 55%);
+      background: linear-gradient(to top, rgba(7, 6, 10, .95) 0%, rgba(7, 6, 10, .4) 60%, transparent 100%);
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
@@ -1009,15 +1009,10 @@
 
     .srv-desc {
       font-size: 12.5px;
-      color: rgba(255, 255, 255, .82);
-      opacity: 0;
-      transform: translateY(10px);
-      transition: all .35s
-    }
-
-    .srv-card:hover .srv-desc {
+      color: rgba(255, 255, 255, .95);
       opacity: 1;
-      transform: translateY(0)
+      transform: none;
+      transition: all .35s
     }
 
     /* PROCESS */
